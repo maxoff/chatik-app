@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Chatik.Server
 {
@@ -6,20 +8,14 @@ namespace Chatik.Server
     {
         static void Main(string[] args)
         {
-            var server = new ChatikServer(12345);
-            
-            try
-            {
-                server.Start();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-            finally
-            {
-                server.Stop();
-            }
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<Server>();
+                });
     }
 }

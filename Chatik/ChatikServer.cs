@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Chatik
 {
     public class ChatikServer
     {
         private readonly int port;
+        private bool started;
         private TcpListener server;
 
         private Dictionary<int, ChatSession> sessions = new Dictionary<int, ChatSession>();
@@ -18,10 +20,11 @@ namespace Chatik
             this.port = port;
         }
 
-        public void Start()
+        public async Task StartAsync()
         {
             try
             {
+                started = true;
                 var localAddr = IPAddress.Parse("127.0.0.1");
                 server = new TcpListener(localAddr, port);
                 server.Start();
@@ -33,7 +36,7 @@ namespace Chatik
                 //accept multiple clients
                 while (true)
                 {
-                    var client = server.AcceptTcpClient();
+                    var client = await server.AcceptTcpClientAsync();
                     Console.WriteLine("Connected {0}", client.Client.RemoteEndPoint);
 
                     var session = new ChatSession(id, client);
@@ -53,15 +56,20 @@ namespace Chatik
             }
             catch (Exception ex)
             {
-                throw ex;
+                if (started)
+                {
+                    throw ex;
+                }
+
             }
         }
 
         public void Stop()
         {
-            if(server != null)
+            if (started && server != null)
             {
                 server.Stop();
+                started = false;
             }
         }
 
@@ -74,7 +82,7 @@ namespace Chatik
         {
             foreach (var session in sessions)
             {
-                if(session.Value.Id != sender)
+                if (session.Value.Id != sender)
                     session.Value.PostMessage($"{sender}: {message}");
             }
         }
