@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 
-namespace Chatik.Server
+namespace Chatik
 {
     public class ChatSession
     {

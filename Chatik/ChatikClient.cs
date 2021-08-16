@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Threading;
 
-namespace Chatik.Client
+namespace Chatik
 {
     public class ChatikClient : IDisposable
     {

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatik.Server", "Chatik.Server\Chatik.Server.csproj", "{812BA1A5-99AD-4378-AE6A-19136F222A3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatik.Server", "Chatik.Server\Chatik.Server.csproj", "{812BA1A5-99AD-4378-AE6A-19136F222A3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatik.Client", "Chatik.Client\Chatik.Client.csproj", "{1753009F-2196-43A5-BF8D-57F09D201F69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chatik.Client", "Chatik.Client\Chatik.Client.csproj", "{1753009F-2196-43A5-BF8D-57F09D201F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chatik", "Chatik\Chatik.csproj", "{D05B4032-3FF8-466E-8CA8-1F15D218881F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1753009F-2196-43A5-BF8D-57F09D201F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1753009F-2196-43A5-BF8D-57F09D201F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1753009F-2196-43A5-BF8D-57F09D201F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D05B4032-3FF8-466E-8CA8-1F15D218881F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05B4032-3FF8-466E-8CA8-1F15D218881F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05B4032-3FF8-466E-8CA8-1F15D218881F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05B4032-3FF8-466E-8CA8-1F15D218881F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
