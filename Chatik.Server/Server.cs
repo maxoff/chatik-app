@@ -9,24 +9,18 @@ namespace Chatik.Server
 {
     public class Server : IHostedService
     {
-        ChatikServer server;
-
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            var server = new ChatikServer(12345);
-
             try
             {
+                var server = new ChatikServer(12345);
+
                 cancellationToken.Register(() => server.Stop());
-                return server.StartAsync();
+                var t = server.StartAsync();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-            }
-            finally
-            {
-                //server.Stop();
             }
 
             return Task.CompletedTask;

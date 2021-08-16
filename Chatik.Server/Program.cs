@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Chatik.Server
 {
@@ -12,10 +13,14 @@ namespace Chatik.Server
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Server>();
+                })
+                .ConfigureLogging(log => 
+                {
+                    log.AddConsole();
                 });
     }
 }
